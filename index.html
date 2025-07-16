@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RR Mehendi Artist | Sagun Se Khushiya</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: #fdfaf6;
+      color: #333;
+    }
+    .top-call-bar {
+      background: #fff;
+      padding: 8px 20px;
+      text-align: right;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      box-shadow: 0 2px 6px rgba(212, 175, 55, 0.4);
+      font-size: 15px;
+    }
+    .top-call-bar i { color: green; margin-right: 6px; }
+
+    header {
+      background: #fff;
+      text-align: center;
+      padding: 12px 20px;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+      position: sticky;
+      top: 40px;
+      z-index: 1500;
+    }
+    header h1 {
+      margin: 5px 0 0;
+      font-size: 28px;
+      color: goldenrod;
+      text-transform: uppercase;
+    }
+    header p {
+      font-size: 15px;
+      font-style: italic;
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: blink 2s infinite;
+    }
+    header p::before, header p::after {
+      content: "🌿";
+      margin: 0 5px;
+    }
+    nav { margin-top: 10px; }
+    nav a {
+      margin: 5px 12px;
+      text-decoration: none;
+      color: #4b2e2e;
+      font-weight: bold;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+    nav a:hover { color: #e67e22; }
+    nav a i { margin-right: 6px; }
+
+    .welcome-box {
+      max-width: 100%;
+      height: 400px;
+      background: url('15.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #FFD700;
+      text-align: center;
+    }
+    .welcome-box h2, .welcome-box p {
+      font-size: 40px;
+      font-weight: bold;
+      text-shadow: 1px 1px 5px #000;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid goldenrod;
+    }
+    .welcome-box h2 {
+      width: 0;
+      animation: typing 3s steps(15, end) forwards, blink 1s infinite;
+    }
+    .welcome-box p {
+      font-size: 24px;
+      margin-top: 10px;
+      width: 0;
+      animation: typing 4s steps(30, end) 3s forwards, blink 1s infinite;
+    }
+    @keyframes typing { from { width: 0; } to { width: 100%; } }
+
+    .section {
+      max-width: 1000px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 60px 25px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3);
+    }
+    .section h2 {
+      text-align: center;
+      color: #4b2e2e;
+      margin-bottom: 15px;
+      font-size: 26px;
+    }
+    .section h2 i {
+      margin-right: 8px;
+      color: goldenrod;
+    }
+    .section h2::after {
+      content: '';
+      display: block;
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(90deg, goldenrod, #f5e4c3, goldenrod);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+    .blink { animation: blink 2s infinite; }
+
+    .rate-table {
+      margin: 20px auto;
+      width: 100%;
+      max-width: 700px;
+      border-collapse: collapse;
+    }
+    .rate-table th, .rate-table td {
+      border: 1px solid #ddd;
+      padding: 14px;
+      text-align: center;
+    }
+    .rate-table th {
+      background: goldenrod;
+      color: #fff;
+      font-size: 18px;
+    }
+    .rate-table td {
+      font-size: 17px;
+      position: relative;
+    }
+    .rate-table td:first-child::before {
+      content: "→";
+      position: absolute;
+      left: -20px;
+      color: darkgoldenrod;
+      animation: blink 1.5s infinite;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    form label { display: block; margin: 8px 0 4px; }
+    form input[type="checkbox"] { width: auto; margin-right: 6px; }
+    form button {
+      padding: 14px;
+      background: goldenrod;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 17px;
+    }
+    .slider img { width: 100%; border-radius: 8px; cursor: pointer; }
+    .full-screen {
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.9);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 9999;
+    }
+    .full-screen img { max-width: 90%; max-height: 90%; }
+    .close-btn {
+      position: absolute; top: 20px; right: 30px;
+      font-size: 30px; color: #fff; cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fff;
+      font-size: 15px;
+    }
+    .whatsapp-float {
+      position: fixed; bottom: 20px; right: 20px;
+      background: #25d366; color: white;
+      border-radius: 50%; padding: 16px;
+      font-size: 28px; text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+
+<div class="top-call-bar">
+  <i class="fas fa-phone-alt"></i> +91 7795817588
+</div>
+
+<header>
+  <h1>RR Mehendi Artist</h1>
+  <p>🌿 Sagun Se Khushiya 🌿</p>
+  <nav>
+    <a href="#gallery"><i class="fas fa-caret-down"></i>Gallery</a>
+    <a href="#create-package"><i class="fas fa-caret-down"></i>Packages</a>
+    <a href="#about"><i class="fas fa-caret-down"></i>About</a>
+  </nav>
+</header>
+
+<div class="welcome-box">
+  <h2>Welcome</h2>
+  <p>Celebrate the Art of Henna</p>
+</div>
+
+<section class="section">
+  <h2><i class="fas fa-award"></i>Certified Vendor</h2>
+  <p style="text-align:center;">Certified with WedMeGood. Our team is very hardworking and talented to make your events memorable.</p>
+</section>
+
+<section class="section">
+  <h2><i class="fas fa-feather-alt"></i>Signature Mehendi</h2>
+  <p style="text-align:center;">Traditional, Royal and Arabic Mehendi designs to elevate your celebration.</p>
+</section>
+
+<section class="section" id="gallery">
+  <h2><i class="fas fa-images"></i>Design Gallery</h2>
+  <div class="slider" onclick="openFullScreen()">
+    <img id="slide" src="images/1.png" alt="Design">
+  </div>
+</section>
+
+<section class="section">
+  <h2><i class="fas fa-list"></i>Offerings & Packages</h2>
+  <table class="rate-table">
+    <tr><th>Offerings</th><th>Rates</th></tr>
+    <tr><td>Bridal Mehendi</td><td>10,000 onwards</td></tr>
+    <tr><td>Guest Mehendi</td><td>300 per hand till wrist</td></tr>
+    <tr><th colspan="2">Packages</th></tr>
+    <tr><td>1 Bride + 25 Guests</td><td>15,000</td></tr>
+    <tr><td>1 Bride + 35 Guests</td><td>25,000</td></tr>
+    <tr><td>1 Bride + 10 Guests</td><td>10,000</td></tr>
+  </table>
+</section>
+
+<section class="section" id="create-package">
+  <h2 class="blink"><i class="fas fa-pen"></i>Create Your Package</h2>
+  <form id="custom-package-form">
+    <label><input type="checkbox" name="bride"> Bride</label>
+    <label><input type="checkbox" name="other"> Other Function</label>
+    <label>Number of Guests:<input type="number" name="guests"></label>
+    <label>Your Suggested Amount:<input type="number" name="amount"></label>
+    <button type="button" onclick="sendToWhatsApp()">Send via WhatsApp</button>
+  </form>
+</section>
+
+<section class="section" id="booking">
+  <h2><i class="fas fa-calendar-check"></i>Contact & Booking</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <label><input type="checkbox"> Wedding</label>
+    <label><input type="checkbox"> Festival</label>
+    <label><input type="checkbox"> Other Function</label>
+    <textarea placeholder="Your Message" rows="5"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<section class="section" id="about">
+  <h2><i class="fas fa-user"></i>About RR Mehendi Artist</h2>
+  <p style="text-align:center;">RR Mehendi Artist is your trusted partner for weddings & festivals. With years of experience, we promise you premium designs, safety and timeless memories.</p>
+</section>
+
+<footer>
+  &copy; 2025 RR Mehendi Artist | 🌿 Sagun Se Khushiya 🌿 | All Rights Reserved
+</footer>
+
+<a href="https://wa.me/917795817588" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  const slides = [];
+  for(let i=1; i<=10; i++) slides.push(`images/${i}.png`);
+  let current = 0;
+  function showSlide() { document.getElementById('slide').src = slides[current]; }
+  function nextSlide() { current = (current+1)%slides.length; showSlide(); }
+  function prevSlide() { current = (current-1+slides.length)%slides.length; showSlide(); }
+  function openFullScreen() {
+    const overlay = document.createElement('div');
+    overlay.className = 'full-screen';
+    overlay.innerHTML = `<span class="close-btn" onclick="document.body.removeChild(this.parentNode)">×</span><img src="${slides[current]}" onclick="nextSlideInFull()"/>`;
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', e => { if(e.target === overlay) document.body.removeChild(overlay); });
+  }
+  function nextSlideInFull() { nextSlide(); document.querySelector('.full-screen img').src = slides[current]; }
+  setInterval(nextSlide, 3000);
+  function sendToWhatsApp(){
+    const f = document.getElementById('custom-package-form');
+    const b = f.querySelector('[name="bride"]').checked ? "Bride Included" : "";
+    const o = f.querySelector('[name="other"]').checked ? "Other Included" : "";
+    const g = f.querySelector('[name="guests"]').value;
+    const a = f.querySelector('[name="amount"]').value;
+    const msg = `Hi! I want to create my package:\n${b}\n${o}\nGuests: ${g}\nAmount: ${a}`;
+    window.open(`https://wa.me/917795817588?text=${encodeURIComponent(msg)}`);
+  }
+</script>
+</body>
+</html>
